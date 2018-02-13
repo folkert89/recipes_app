@@ -4,6 +4,7 @@ import RecipeItem from "./RecipeItem"
 import { connect } from 'react-redux'
 import RecipeEditor from './RecipeEditor'
 import { fetchRecipes } from '../actions/recipes/recipes'
+import Navigation from '../components/Navigation'
 
 class RecipesContainer extends PureComponent {
   renderRecipe(recipe, index){
@@ -20,6 +21,7 @@ class RecipesContainer extends PureComponent {
     return(
       <div className="recipes wrapper">
         <header>
+         <Navigation />
          <Title content="Recipes" />
          <RecipeEditor />
         </header>

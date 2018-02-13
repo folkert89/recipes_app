@@ -1,10 +1,9 @@
 import ApiClient from '../../api/client'
 import { history } from '../../store'
+import { push } from 'react-router-redux'
 // import {loading, loadError} from './loading'
 // import loading from '../loading' // ???
 // import loadError from '../loadError' // ???
-export const SIGN_UP = 'SIGN_UP'
-export const SIGN_IN = 'SIGN_IN'
 
 // export const SIGN_IN = 'SIGN_IN'
 
@@ -19,7 +18,7 @@ export const signUp = (user) => {
         console.log(`sign up ${res.body.name} succesfully`)
         console.log('------')
         console.log(res.body)
-        dispatch({ type: SIGN_UP, payload: res.body })
+        dispatch({ type: "SIGN_UP", payload: res.body })
       })
   }
 }
@@ -45,8 +44,16 @@ export const fetchUserData = () => {
     api.get(path)
       .then(res => {
         console.log(res.body)
-        dispatch({ type: SIGN_IN, payload: res.body })
-        history.push(`/${res.body.name}`)
+        dispatch({ type: "SIGN_IN", payload: res.body })
+        dispatch(push('/'))
       })
+  }
+}
+
+
+export const signOut = () => {
+  api.signOut()
+  return {
+    type: "SIGN_OUT"
   }
 }
