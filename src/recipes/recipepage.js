@@ -14,13 +14,14 @@ export class RecipePage extends PureComponent {
   }
 
   render() {
-    const { title } = this.props
+    const { title, summary } = this.props
 
     if (!title) return null
 
     return(
       <div className="recipe page">
         <Title content={ title } />
+        <h3> { summary } </h3>
       </div>
     )
   }
